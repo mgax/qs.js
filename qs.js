@@ -3,7 +3,7 @@
   QS.parse = function(url) {
     var rv = {};
     if(url.indexOf('?') > -1) {
-      url.match(/\?(.*)/)[1].split('&').forEach((pair) => {
+      url.match(/\?(.*)/)[1].split('&').forEach(function(pair) {
         var [k, v] = pair.split('=').map(decodeURIComponent);
         if(! rv[k]) { rv[k] = []; }
         rv[k].push(v);
