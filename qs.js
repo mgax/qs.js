@@ -1,7 +1,6 @@
 (function(g) {
-  var QS = g.QS = {};
-  QS.parse = function(url) {
-    var rv = {};
+  function parse(url, rv) {
+    var rv = rv || {};
     if(url.indexOf('?') > -1) {
       url.match(/\?(.*)/)[1].split('&').forEach(function(pair) {
         var kv = pair.split('=').map(decodeURIComponent), k = kv[0], v = kv[1];
@@ -11,4 +10,5 @@
     }
     return rv;
   };
+  g.QS = parse(g.location && g.location.search || "", parse);
 })(this);
